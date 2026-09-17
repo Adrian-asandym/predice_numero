@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reconocedor de Dígitos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="layout">
+    <section class="panel draw-panel">
+      <header class="panel-header">
+        <h1>Reconocedor de Dígitos</h1>
+        <p class="subtitle">Dibuja un número del 0 al 9 con el mouse o el panel táctil</p>
+      </header>
+      <div class="canvas-wrap">
+        <canvas id="pad"></canvas>
+      </div>
+      <div class="actions">
+        <button id="clear-btn" type="button">Limpiar</button>
+        <span id="status" class="status">Cargando modelo…</span>
+      </div>
+    </section>
+
+    <aside class="panel sidebar">
+      <h2 class="sidebar-title">Predicción</h2>
+      <div class="prediction-hero">
+        <span id="big-digit">—</span>
+        <span id="confidence" class="confidence">Dibuja un número para empezar</span>
+      </div>
+      <div class="preview-block">
+        <span class="preview-label">Lo que ve el modelo (28×28)</span>
+        <canvas id="preview" width="28" height="28"></canvas>
+      </div>
+      <ul id="bars" class="bars"></ul>
+    </aside>
+  </main>
+
+  <script src="weights-data.js"></script>
+  <script src="model-core.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -7,6 +7,8 @@ const confidence = document.getElementById("confidence");
 const barsList = document.getElementById("bars");
 const statusEl = document.getElementById("status");
 const clearBtn = document.getElementById("clear-btn");
+const brushSize = document.getElementById("brush-size");
+const brushDot = document.getElementById("brush-dot");
 
 const WORK = 280;
 const offscreen = document.createElement("canvas");
@@ -45,6 +47,14 @@ for (let i = 0; i < 10; i++) {
   barRows.push({ row, fill, pct });
 }
 
+function applyBrushWidth() {
+  const pct = Number(brushSize.value) / 100;
+  padCtx.lineWidth = Math.max(4, pad.width * pct);
+  const dotSize = Math.max(4, pad.getBoundingClientRect().width * pct);
+  brushDot.style.width = dotSize + "px";
+  brushDot.style.height = dotSize + "px";
+}
+
 function setupCanvas() {
   const rect = pad.getBoundingClientRect();
   const dpr = window.devicePixelRatio || 1;
@@ -54,7 +64,7 @@ function setupCanvas() {
   padCtx.lineJoin = "round";
   padCtx.strokeStyle = "#ffffff";
   padCtx.fillStyle = "#ffffff";
-  padCtx.lineWidth = Math.max(10, pad.width * 0.06);
+  applyBrushWidth();
   clearPad();
 }
 
@@ -118,6 +128,7 @@ function endStroke() {
 pad.addEventListener("pointerup", endStroke);
 pad.addEventListener("pointercancel", endStroke);
 clearBtn.addEventListener("click", clearPad);
+brushSize.addEventListener("input", applyBrushWidth);
 
 function renderPreview(input) {
   const data = previewImage.data;

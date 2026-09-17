@@ -79,6 +79,33 @@ body {
   touch-action: none;
 }
 
+.brush-control {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brush-control label {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+#brush-size {
+  flex: 1;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+#brush-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  flex: 0 0 auto;
+  transition: width 0.1s ease, height 0.1s ease;
+}
+
 .actions {
   display: flex;
   align-items: center;

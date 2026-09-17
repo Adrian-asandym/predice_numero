@@ -16,6 +16,11 @@
       <div class="canvas-wrap">
         <canvas id="pad"></canvas>
       </div>
+      <div class="brush-control">
+        <label for="brush-size">Grosor del pincel</label>
+        <input type="range" id="brush-size" min="2" max="14" step="1" value="6">
+        <span id="brush-dot" aria-hidden="true"></span>
+      </div>
       <div class="actions">
         <button id="clear-btn" type="button">Limpiar</button>
         <span id="status" class="status">Cargando modelo…</span>
